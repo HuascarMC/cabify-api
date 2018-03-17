@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe 'Cabs API', type: :request do
+RSpec.describe 'cabs API', type: :request do
   # initialize test data
-  let!(:Cabs) { create_list(:cab, 10) }
-  let(:cab_id) { Cabs.first.id }
+  let!(:cabs) { create_list(:cab, 10) }
+  let(:cab_id) { cabs.first.id }
 
-  # Test suite for GET /Cabs
-  describe 'GET /Cabs' do
+  # Test suite for GET /cabs
+  describe 'GET /cabs' do
     # make HTTP get request before each example
-    before { get '/Cabs' }
+    before { get '/cabs' }
 
-    it 'returns Cabs' do
+    it 'returns cabs' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
       expect(json.size).to eq(10)
@@ -21,9 +21,9 @@ RSpec.describe 'Cabs API', type: :request do
     end
   end
 
-  # Test suite for GET /Cabs/:id
-  describe 'GET /Cabs/:id' do
-    before { get "/Cabs/#{cab_id}" }
+  # Test suite for GET /cabs/:id
+  describe 'GET /cabs/:id' do
+    before { get "/cabs/#{cab_id}" }
 
     context 'when the record exists' do
       it 'returns the cab' do
@@ -49,13 +49,13 @@ RSpec.describe 'Cabs API', type: :request do
     end
   end
 
-  # Test suite for POST /Cabs
-  describe 'POST /Cabs' do
+  # Test suite for POST /cabs
+  describe 'POST /cabs' do
     # valid payload
     let(:valid_attributes) { { state: 'free', name: 'Elon', city: 'Melbourne' } }
 
     context 'when the request is valid' do
-      before { post '/Cabs', params: valid_attributes }
+      before { post '/cabs', params: valid_attributes }
 
       it 'creates a cab' do
         expect(json['name']).to eq('Elon')
@@ -67,7 +67,7 @@ RSpec.describe 'Cabs API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/Cabs', params: { name: 'Foobar' } }
+      before { post '/cabs', params: { name: 'Foobar' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -75,17 +75,17 @@ RSpec.describe 'Cabs API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Created by can't be blank/)
+          .to match(/Validation failed: City can't be blank/)
       end
     end
   end
 
-  # Test suite for PUT /Cabs/:id
-  describe 'PUT /Cabs/:id' do
+  # Test suite for PUT /cabs/:id
+  describe 'PUT /cabs/:id' do
     let(:valid_attributes) { { name: 'Elon' } }
 
     context 'when the record exists' do
-      before { put "/Cabs/#{cab_id}", params: valid_attributes }
+      before { put "/cabs/#{cab_id}", params: valid_attributes }
 
       it 'updates the record' do
         expect(response.body).to be_empty
@@ -97,8 +97,8 @@ RSpec.describe 'Cabs API', type: :request do
     end
   end
 
-  # Test suite for DELETE /Cabs/:id
-  describe 'DELETE /Cabs/:id' do
+  # Test suite for DELETE /cabs/:id
+  describe 'DELETE /cabs/:id' do
     before { delete "/cabs/#{cab_id}" }
 
     it 'returns status code 204' do
