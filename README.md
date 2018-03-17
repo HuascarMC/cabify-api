@@ -1,11 +1,8 @@
-# README
+# Cabify API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+In progress
 
-Things you may want to cover:
-
-* Ruby version
+* Rails 5
 
 * System dependencies
 
@@ -20,5 +17,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
