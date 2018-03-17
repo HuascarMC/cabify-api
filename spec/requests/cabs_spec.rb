@@ -1,4 +1,4 @@
-Cabsrequire 'rails_helper'
+require 'rails_helper'
 
 RSpec.describe 'Cabs API', type: :request do
   # initialize test data
