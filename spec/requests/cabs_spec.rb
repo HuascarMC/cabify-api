@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'cabs API', type: :request do
+RSpec.describe 'Cabs API', type: :request do
   # initialize test data
   let!(:cabs) { create_list(:cab, 10) }
   let(:cab_id) { cabs.first.id }

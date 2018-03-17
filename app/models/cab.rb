@@ -1,6 +1,6 @@
 class Cab < ApplicationRecord
 
- has_one :location, dependent: :destroy
+ has_many :location, dependent: :destroy
 
  validates_presence_of :state, :name, :city
 end
