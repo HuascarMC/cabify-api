@@ -44,7 +44,7 @@ RSpec.describe 'cabs API', type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find cab/)
+        expect(response.body).to match(/Couldn't find Cab/)
       end
     end
   end
@@ -67,7 +67,7 @@ RSpec.describe 'cabs API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/cabs', params: { name: 'Foobar' } }
+      before { post '/cabs', params: { state: 'free', name: 'Fooname' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
