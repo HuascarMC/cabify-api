@@ -1,15 +1,15 @@
 class CabsController < ApplicationController
- before_action :set_cab, only: [:show, :update, :destroy]
+ # before_action :set_cab, only: [:show, :update, :destroy]
 
  # GET /cabs
  def index
-   @cabs = Cab.all
+   @cabs = current_user.cab
    json_response(@cabs)
  end
 
  # POST /cabs
  def create
-   @cab = Cab.create!(cab_params)
+   @cab = current_user.cabs.create!(cab_params)
    json_response(@cab, :created)
  end
 
