@@ -3,5 +3,5 @@ class User < ApplicationRecord
 
  has_one :cab, foreign_key: :name
 
- validates_presence of :name, :email, :password_digest
+ validates_presence_of :name, :email, :password_digest
 end
