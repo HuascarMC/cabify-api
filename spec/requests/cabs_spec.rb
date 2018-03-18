@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Cabs API', type: :request do
   # initialize test data
-  let(:user) { create(:user) }
+  let!(:cabs) { create_list(:cab, 1) }
+  let(:user) { create(:user, cab: cab) }
 
-  let!(:cabs) { create_list(:cab, 10) }
   let(:cab_id) { cabs.first.id }
 
   # authorize request
@@ -17,7 +17,7 @@ RSpec.describe 'Cabs API', type: :request do
 
     it 'returns cabs' do
       # Note `json` is a custom helper to parse JSON responses
-      # expect(json).not_to be_empty
+      expect(json).not_to be_empty
       expect(json.size).to eq(10)
     end
 
